@@ -23,7 +23,7 @@ client = MultiClient(api_id=12345, api_hash='my_api_hash', sessions=['list', 'of
 @client.on(events.NewMessage)
 def listener(event):
     # Now we need to use `event.client.etc` instead of client.etc to be able to run a function on all the available clients!
-    await event.client.reply("Hello World!")
+    await event.client.send_message(event.chat_id, "Hello World!")
 
     # To find out from which session an event was triggered we use:
     id = event.client.session_id # session id is the name of the session attached to the client which received the event.
