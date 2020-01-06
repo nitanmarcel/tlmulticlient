@@ -4,8 +4,6 @@ import logging
 from telethon.events.common import EventBuilder
 
 
-# CLIENTS:list = list()
-
 class MultiClient:
     def __init__(self, sessions: list, *args, **kwargs) -> TelegramClient:
         self.sessions: list = sessions
@@ -29,10 +27,8 @@ class MultiClient:
         loop.run_until_complete(self._run_all_clients())
 
     async def _run_all_clients(self):
-        for cli in self.clients:
-            await cli.start()
-
         tasks: list = list()
         for cli in self.clients:
+            await cli.start()
             tasks.append(cli.run_until_disconnected())
-            done, tasks = await asyncio.wait(tasks, return_when=asyncio.FIRST_COMPLETED)
+        done, tasks = await asyncio.gather(*tasks)
