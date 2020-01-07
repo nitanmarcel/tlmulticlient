@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='tlmulticlient',
-    version='0.0.2',
+    version='0.0.4',
     url='https://github.com/nitanmarcel/tlmulticlient',
     license='MIT',
     author='Nitan Alexandru Marcel',
