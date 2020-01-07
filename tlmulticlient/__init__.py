@@ -32,3 +32,6 @@ class MultiClient:
             await cli.start()
             tasks.append(cli.run_until_disconnected())
         done, tasks = await asyncio.gather(*tasks)
+    def __iter__(self):
+       return iter(self.clients)
+

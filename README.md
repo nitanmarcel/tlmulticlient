@@ -32,6 +32,11 @@ def listener(event):
     else:
         print('This event was triggered from the session named {0}'.format(id))
 
+# iterate though all the clients
+
+for c in client:
+    print(c.session_id)
+
 # run all the clients
 
 loop = asyncio.get_event_loop()
