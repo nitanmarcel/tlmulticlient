@@ -2,8 +2,8 @@ from setuptools import setup
 
 setup(
     name='tlmulticlient',
-    version='0.0.4',
-    url='https://github.com/nitanmarcel/tlmulticlient',
+    version='0.0.5',
+    #url='https://github.com/nitanmarcel/tlmulticlient',
     license='MIT',
     author='Nitan Alexandru Marcel',
     author_email='nitan.marcel@protonmail.com',
@@ -14,6 +14,10 @@ setup(
     platforms='any',
     install_requires=['telethon'],
     include_package_data=True,
+    project_urls={
+        'Donations': 'https://paypal.me/marcelalexandrunitan?locale.x=en_US',
+        'Source': 'https://github.com/nitanmarcel/tlmulticlient'
+    },
     classifiers=[
         'Intended Audience :: Developers',
         'Operating System :: OS Independent',
@@ -21,5 +25,6 @@ setup(
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: 3.9',
-        'Topic :: Software Development :: Libraries :: Python Modules']
+        'Topic :: Software Development :: Libraries :: Python Modules'],
+    keywords='telethon telegram telegram-client'
 )
