@@ -1,4 +1,5 @@
 from telethon import TelegramClient, __name__ as __base_name__
+from telethon.tl import TLObject
 import asyncio
 import logging
 from telethon.events.common import EventBuilder
@@ -32,6 +33,29 @@ class MultiClient:
             await cli.start()
             tasks.append(cli.run_until_disconnected())
         done, tasks = await asyncio.gather(*tasks)
-    def __iter__(self):
-       return iter(self.clients)
 
+    def to_dict(self):
+        return {c.session_id: c for c in self.clients}
+
+    def stringify(self):
+        result = ['(', '\n']
+        for session_id, client in self.to_dict().items():
+            result.append('\t')
+            result.append(session_id)
+            result.append(' : ')
+            result.append(TLObject.pretty_format(client.__dict__, indent=0))
+            result.append(',\n')
+        result.pop()
+        result.append('\n')
+        result.append('\t')
+        result.append(')')
+        return ''.join(result)
+
+    def __iter__(self):
+        return iter(self.clients)
+
+    def __dict__(self):
+        self.to_dict()
+
+    def __str__(self):
+        return self.stringify()
