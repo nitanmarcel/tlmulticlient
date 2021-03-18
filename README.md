@@ -1,5 +1,7 @@
 # Multi Sessions addon for Telethon
 
+## This project might not work 100%, use this more as a reference project rather than an working library. The MIT license should make it easy for you to use parts of the code here in your own projects
+
 ## Installing:
 
 ```bash
